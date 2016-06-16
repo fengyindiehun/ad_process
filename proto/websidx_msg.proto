@@ -1,0 +1,6 @@
+package websidx_interface;
+
+message DocumentMsg {
+  required uint32 ad_type=1;  // 1-aim; 4-trend; 8-feed; 12-spefeed;
+  required bytes adcontent=2; // content string
+};

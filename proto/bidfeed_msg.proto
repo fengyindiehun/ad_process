@@ -1,0 +1,54 @@
+import "websidx_msg.proto";
+package websidx_interface;
+
+////////// message for feed(ad_type=8) begin //////////
+message AdBidFeedContentOps {
+  required uint32 type=1;     // 100-add; 200-update opc; 201-update content; 300-status;
+  required AdBidFeedDetailInfo adfeed_info=2;
+};
+
+message KeyValue {
+  required string key = 1;
+  repeated string value = 2;
+};
+
+message AdBidFeedOpcInfo {
+  repeated uint32 age=1;
+  repeated uint32 gender=2;
+  repeated uint32 location=3;
+  repeated uint32 interests=4;
+  repeated string bidwords=5;
+  required string type=6;     // required
+  repeated uint64 cust_list=7;
+  optional double royalty_price=8;
+  repeated KeyValue reserved = 9; 
+};
+
+message AdBidFeedNativeOpcInfo {
+  optional uint32 enable=1;  // 1:native 0:non-native
+  repeated uint32 age=2;
+  repeated uint32 gender=3;
+  repeated uint32 location=4;
+  repeated uint32 device=5;
+};
+
+message AdBidFeedDetailInfo {
+  required uint32 ad_id=1;
+  required int32  status=2;
+  optional uint64 feed_id=3;
+  optional uint64 cust_id=4;
+  optional string feed_post_time=5;
+  optional string psid=6;
+  optional int32  ad_type=7;  // ad_type=8
+  optional uint32 impression=8;
+  optional string updatetime=9;
+  optional int32  version=10;
+  optional string device=11;  // post device
+  optional double price=12;
+  optional uint32 settle_type=13; // 1-CPM; 2-CPE;
+  repeated AdBidFeedOpcInfo adfeedopclist=14;
+  optional AdBidFeedNativeOpcInfo adfeednativeopc=15; //native opc, optional
+};
+////////// message for feed(ad_type=8) end //////////
+
+
